@@ -1,36 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Link, Outlet } from "react-router-dom";
+import React from 'react'
+import { Outlet } from "react-router-dom";
+import {Routes,Route} from 'react-router-dom'
+import Home from './pages/Home'
+import PlaceOrder from './pages/PlaceOrder'
+import Orders from './pages/Orders'
+import Collection from './pages/Collection'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import Product from './pages/Product'
+import Cart from './pages/Cart'
+import Login from './pages/Login'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
 
-      <nav>
+
+<div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
+     <Navbar />
+     <Routes>
+      <Route path='/testing/' element={<Home/>} />
+      <Route path='/testing/collection' element={<Collection/>} />
+      <Route path='/testing/about' element={<About/>} />
+      <Route path='/testing/contact' element={<Contact/>} />
+      <Route path='/testing/product/:productId' element={<Product/>} />
+      <Route path='/testing/cart' element={<Cart/>} />
+      <Route path='/testing/login' element={<Login/>} />
+      <Route path='/testing/place-order' element={<PlaceOrder/>} />
+      <Route path='/testing/orders' element={<Orders/>} />
+     </Routes>
+     <Outlet/>
+     <Footer />
+    </div>
+
+
+
+
+ 
+  )
+}
+
+export default App
+
+
+      {/* <nav>
         <Link to="/testing/">Home</Link>
         {" | "}
         <Link to="/testing/contact">Contact</Link>
       </nav>
 
-<Outlet/>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+<Outlet/> */}
