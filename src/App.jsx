@@ -24,15 +24,15 @@ function App() {
      <Navbar />
      <SearchBar />
      <Routes>
-      <Route path='' element={<Home/>} />
-      <Route path='collection' element={<Collection/>} />
-      <Route path='about' element={<About/>} />
-      <Route path='contact' element={<Contact/>} />
-      <Route path='product/:productId' element={<Product/>} />
-      <Route path='cart' element={<Cart/>} />
-      <Route path='login' element={<Login/>} />
-      <Route path='place-order' element={<PlaceOrder/>} />
-      <Route path='orders' element={<Orders/>} />
+      <Route path='/testing/' element={<Home/>} />
+      <Route path='/testing/collection' element={<Collection/>} />
+      <Route path='/testing/about' element={<About/>} />
+      <Route path='/testing/contact' element={<Contact/>} />
+      <Route path='/testing/product/:productId' element={<Product/>} />
+      <Route path='/testing/cart' element={<Cart/>} />
+      <Route path='/testing/login' element={<Login/>} />
+      <Route path='/testing/place-order' element={<PlaceOrder/>} />
+      <Route path='/testing/orders' element={<Orders/>} />
      </Routes>
      <Outlet/>
      <Footer />

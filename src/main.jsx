@@ -17,43 +17,43 @@ import Orders from './pages/Orders.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/testing/*",
+    path: "/testing/",
     element: <App />,
     children: [
       {
-        path: "",
+        path: "/testing/",
         element: <Home />,
       },
       {
-        path: "collection",
+        path: "/testing/collection",
         element: <Collection />,
       },
       {
-        path: "about",
+        path: "/testing/about",
         element: <About />,
       },
       {
-        path: "product/:productId",
+        path: "/testing/product/:productId",
         element: <Product />,
       },
       {
-        path: "cart",
+        path: "/testing/cart",
         element: <Cart />,
       },
       {
-        path: "login",
+        path: "/testing/login",
         element: <Login />,
       },
       {
-        path: "place-order",
+        path: "/testing/place-order",
         element: <PlaceOrder />,
       },
       {
-        path: "orders",
+        path: "/testing/orders",
         element: <Orders />,
       },
       {
-        path: "contact",
+        path: "/testing/contact",
         element: <Contact />,
       },
     ],
