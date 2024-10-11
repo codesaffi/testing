@@ -3,12 +3,18 @@ import { ShopContext } from '../context/ShopContext'
 import Title from '../components/Title';
 import { assets } from '../assets/frontend_assets/assets';
 import CartTotal from '../components/CartTotal';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
   const { products, currency, cartItems, updateQuantity } = useContext(ShopContext);
 
   const [cartData,setCartData] = useState([]);
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path); // Navigate to the specified path
+  };
 
   useEffect(()=>{
 
@@ -61,10 +67,10 @@ const Cart = () => {
       </div>
       
       <div className='flex justify-end my-20'>
-        <div className=' w-full sm:w-{450px]'>
+        <div className=' w-full sm:w-[450px]'>
           <CartTotal />
           <div className=' w-full text-end'>
-            <button></button>
+            <button  onClick={() => handleNavigation('/testing/place-order')} className=' bg-black text-white text-sm my-8 px-8 py-3'>PROCEED TO CHECKOUT</button>
           </div>
         </div>
       </div>
