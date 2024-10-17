@@ -18,9 +18,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
-
   return (
-
 
 <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
   <ToastContainer />
@@ -41,20 +39,7 @@ function App() {
      <Footer />
     </div>
 
-
-
-
- 
   )
 }
 
 export default App
-
-
-      {/* <nav>
-        <Link to="/testing/">Home</Link>
-        {" | "}
-        <Link to="/testing/contact">Contact</Link>
-      </nav>
-
-<Outlet/> */}
