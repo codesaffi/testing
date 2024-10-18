@@ -103,4 +103,4 @@ const adminLogin = async (req,res)=> {
 
 }
 
-export  { loginUser,registerUser, adminLogin }
+export  { loginUser,registerUser, adminLogin } 

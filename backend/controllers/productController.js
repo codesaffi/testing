@@ -17,6 +17,7 @@ const addProduct = async (req,res) => {
         let imagesUrl = await Promise.all(
            images.map(async (item) => {
              let result = await cloudinary.uploader.upload(item.path,{resource_type:"image"});
+             return result.secure_url
            })
         )
 
@@ -46,7 +47,7 @@ const addProduct = async (req,res) => {
 
 }
 
-// funtion for lisy products
+// funtion for list products
 const listProducts = async (req,res) => {
     try {
         
