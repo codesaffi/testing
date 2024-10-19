@@ -7,10 +7,12 @@ const List = ({token}) => {
 
   const [list,setList] = useState([])
 
-  const fetchList = async () => {
+  const fetchList = async () => { 
     try{
 
-      const repsonse = await axios.get(backendUrl + '/api/product/list',{headers:{token}})
+      const repsonse = await axios.get(backendUrl + '/api/product/list')
+      console.log(repsonse.data);
+      
       if (repsonse.data.success) {
         setList(repsonse.data.products);
       } else {
