@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const [currentState, setCurrentState] = useState('Sign Up');
+  const [currentState, setCurrentState] = useState('Login');
   const { token, setToken} = useContext(ShopContext)
 
   const [name,setName] = useState('')
@@ -47,14 +47,11 @@ const Login = () => {
       toast.error(error.message)
     }
   }
-
-  // useEffect(()=>{
-  //   if (token) {
-  //      const handleNavigation = (path) => {
-  //       navigate(path); // Navigate to the specified path
-  //     };
-  //   }
-  // },[token])
+useEffect(()=>{
+  if (token) {
+    navigate('/testing/')
+  }
+},[token])
 
   return (
     <form onSubmit={onSubmitHandler} className=' flex flex-col items-center w-[90%] sm:max-w-96 m-auto gap-4 text-gray-800'>
