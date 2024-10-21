@@ -4,6 +4,8 @@ import CartTotal from '../components/CartTotal'
 import { assets } from '../assets/frontend_assets/assets'
 import { useNavigate } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext.jsx';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const PlaceOrder = () => {
 
@@ -19,7 +21,12 @@ const PlaceOrder = () => {
     zipcode:'',
     country:'',
     phone:''
-  });
+  })
+    const navigate = useNavigate();
+
+    // const handleNavigation = (path) => {
+    //   navigate(path); // Navigate to the specified path
+    // };
 
   const onChangeHandler = (event) => {
     const name = event.target.name
@@ -37,7 +44,7 @@ const PlaceOrder = () => {
 
       for(const items in cartItems) {
         for(const item in cartItems[items]){
-          if (cartItems[items][items] > 0 ) {
+          if (cartItems[items][item] > 0 ) {
             const itemInfo = structuredClone(products.find(product => product._id === items))
             if (itemInfo) {
               itemInfo.size = item
@@ -48,19 +55,42 @@ const PlaceOrder = () => {
         }
       }
 
-      console.log(orderItems);
+      const orderData = {
+        address: formData,
+        items: orderItems,
+        amount: getCartAmount() + delivery_fee
+      }
       
+      switch(method) {
+
+        //API calls for COD
+        case 'cod':
+          const response = await axios.post('http://localhost:4000/api/order/place',orderData,{ headers: { Authorization: `Bearer ${token}` } })          
+          if (response.data.succes) {
+            setCartItems({})
+            navigate('/testing/orders')
+          } else {
+            toast.error(response.data.message)
+          }
+          break;
+
+        default:
+          break;  
+      }
       
     } catch (error) {
+
+          // Handle and log the error for troubleshooting
+    console.error( error);
+    toast.error(error.message);
       
     }
   }
+  
 
-  // const navigate = useNavigate();
 
-  // const handleNavigation = (path) => {
-  //   navigate(path); // Navigate to the specified path
-  // };
+
+
 
   return (
     <form onSubmit={onSubmitHandler} className=' flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
@@ -113,7 +143,7 @@ const PlaceOrder = () => {
               </div>
 
               <div className='w-full text-end mt-8'>
-                <button type='submit'  className='bg-black text-white px-16 py-3 text-sm'>PLACE ORDER</button>
+                <button type='submit' className='bg-black text-white px-16 py-3 text-sm'>PLACE ORDER</button>
               </div>
 
             </div>

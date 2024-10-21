@@ -10,7 +10,7 @@ orderRouter.post('/list',adminAuth,allOrders)
 orderRouter.post('/status',adminAuth,UpdateStatus)
 
 //payemnt feature
-orderRouter.post('/place',adminAuth,placeOrder)
+orderRouter.post('/place',authUser,placeOrder)
 
 //user feature
 orderRouter.post('/userorders',authUser,userOrders)
